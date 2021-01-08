@@ -1,0 +1,30 @@
+@model WebApplication15.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+    var list = (List<SelectListItem>)ViewBag.Books;
+}
+
+<h2>@ViewBag.Name = BORROWED BOOKS DETAILS</h2>
+
+<table class="table table-hove table-striped">
+    <tr>
+        <th>Sr.</th>
+        <th>Name</th>
+        <th class="text-center">Status</th>
+    </tr>
+    @foreach(var item in list)
+    {
+        <tr>
+            <td>@(list.IndexOf(item) + 1)</td>
+            <td>@item.Text</td>
+            <td class="text-center text-danger"><i class="glyphicon glyphicon-ok"></i>Booked</td>
+        </tr>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+
+    </div>
